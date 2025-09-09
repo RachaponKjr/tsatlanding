@@ -1,0 +1,180 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id       Int      @id @default(autoincrement())
+  username String
+  password String
+  role     UserRole @default(USER)
+  createAt DateTime @default(now())
+}
+
+model Cms {
+  id                        Int     @id @default(autoincrement())
+  banner_image              String?
+  bannermobile              String?
+  logo_image                String?
+  section1_header           String?
+  section1_sub              String?
+  section2_header           String?
+  section2_sub              String?
+  section2_banner_url       String?
+  section2_sub2             String?
+  section3_header           String?
+  section3_sub              String?
+  section3_item1_image      String?
+  section3_item1_header     String?
+  section3_item1_sub        String?
+  section3_item2_image      String?
+  section3_item2_header     String?
+  section3_item2_sub        String?
+  section3_item3_image      String?
+  section3_item3_header     String?
+  section3_item3_sub        String?
+  promotion_head            String?
+  promotion_banner          String?
+  promotion_item_image      String?
+  promotion_detail          String?
+  consult_head              String?
+  consult_detail            String?
+  service_head              String?
+  service_detail            String?
+  icon_service_one          String?
+  service_item_head_one     String?
+  service_item_detail_one   String?
+  icon_service_two          String?
+  service_item_head_two     String?
+  service_item_detail_two   String?
+  icon_service_three        String?
+  service_item_head_three   String?
+  service_item_detail_three String?
+  about_head                String?
+  about_detail              String?
+  about_image               String?
+}
+
+model FAQ {
+  id     Int     @id @default(autoincrement())
+  title  String?
+  detail String?
+}
+
+model Page {
+  id   String  @id @default(cuid())
+  slug String? @unique
+
+  // Basic SEO
+  title       String
+  description String?
+  keywords    String[] // Array of keywords
+  canonical   String?
+  robots      String?  @default("index,follow")
+
+  // Open Graph
+  ogTitle       String?
+  ogDescription String?
+  ogImage       String?
+  ogImageAlt    String?
+  ogType        String? @default("website")
+  ogUrl         String?
+  ogSiteName    String?
+  ogLocale      String? @default("th_TH")
+
+  // Twitter Cards  
+  twitterCard        String? @default("summary_large_image")
+  twitterTitle       String?
+  twitterDescription String?
+  twitterImage       String?
+  twitterSite        String?
+  twitterCreator     String?
+
+  // Additional Meta
+  author    String?
+  publisher String?
+  language  String? @default("th")
+  viewport  String? @default("width=device-width,initial-scale=1")
+
+  // Schema.org structured data
+  schemaType String? // "Article", "Product", "Organization" etc
+  schemaData Json? // JSON object for flexible schema data
+
+  // Technical SEO
+  priority     Float?   @default(0.5) // For sitemap
+  changefreq   String?  @default("monthly") // For sitemap
+  lastModified DateTime @updatedAt
+
+  // Content
+  content   String?
+  published Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("pages")
+}
+
+// สำหรับ Global SEO Settings
+model SeoSettings {
+  id String @id @default(cuid())
+
+  // Site-wide settings
+  siteName        String
+  siteDescription String
+  siteUrl         String
+  defaultOgImage  String?
+
+  // Social profiles
+  facebookUrl   String?
+  twitterHandle String?
+  instagramUrl  String?
+  linkedinUrl   String?
+
+  // Verification codes
+  googleVerification String?
+  bingVerification   String?
+
+  // Analytics
+  googleAnalyticsId String?
+
+  // Default meta
+  defaultRobots   String @default("index,follow")
+  defaultLanguage String @default("th")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("seo_settings")
+}
+
+model Contact {
+  id            Int     @id @default(autoincrement())
+  line          String?
+  line_url      String?
+  phone_number  String?
+  phone_number2 String?
+  facebook      String?
+  fackbook_url  String?
+  instagam      String?
+  instagam_url  String?
+  email         String?
+  web_url       String?
+}
+
+enum UserRole {
+  ADMIN
+  USER
+  OWNER
+}
