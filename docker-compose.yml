@@ -1,0 +1,58 @@
+version: "3.8"
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+    container_name: tsat-landing-front
+    ports:
+      - "3031:3031"
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:4000
+      API_URL: http://tsat-landing-back:4000
+    depends_on:
+      - backend
+    networks:
+      - tsat-landing-network
+
+  backend:
+    build:
+      context: ./backend
+    container_name: tsat-landing-back
+    ports:
+      - "4000:4000"
+    environment:
+      DATABASE_URL: postgresql://dblanding:H9VBy9ECbAZesKweFR6Rvbbgv@db:5431/dblanding
+    depends_on:
+      - db
+    networks:
+      - tsat-landing-network
+    volumes:
+      - ./backend:/app
+    command: >
+      sh -c "
+        npx prisma migrate deploy &&
+        npm run start
+      "
+
+  db:
+    image: postgres:15
+    container_name: postgres
+    restart: always
+    ports:
+      - "5431:5431"
+    environment:
+      POSTGRES_USER: dblanding
+      POSTGRES_PASSWORD: H9VBy9ECbAZesKweFR6Rvbbgv
+      POSTGRES_DB: dblanding
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    networks:
+      - tsat-landing-network
+
+volumes:
+  pgdata:
+
+networks:
+  tsat-landing-network:
+    driver: bridge
