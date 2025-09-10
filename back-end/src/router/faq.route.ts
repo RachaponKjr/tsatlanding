@@ -1,7 +1,7 @@
 import {
   authenticateToken,
   authorizeRoles,
-} from '@/middlewares/auth.middleware';
+} from '../middlewares/auth.middleware';
 import {
   createFaqController,
   delFaqController,
