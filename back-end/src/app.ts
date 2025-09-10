@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(
   cors({
     origin: 'http://150.95.26.51:3031',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE','PATCH'],
     credentials: true,
   }),
 );
