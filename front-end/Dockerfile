@@ -27,6 +27,8 @@
     COPY --from=builder /app/package.json ./package.json
     
     # Set environment variable (optional default)
+    ARG NEXT_PUBLIC_API_URL
+    ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
     ENV NODE_ENV=production
     
     # Expose port

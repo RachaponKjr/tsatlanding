@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   images: {
     // อนุญาตให้โหลดรูปภาพจากโดเมนเหล่านี้
     domains: [
-      "localhost",
+      "http://150.95.26.51",
       "example.com",
       "cdn.example.com",
       "images.unsplash.com",
@@ -20,8 +20,8 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "http",
-        hostname: "localhost",
-        port: "3000",
+        hostname: "150.95.26.51",
+        port: "4000",
         pathname: "/uploads/**", // อนุญาตเฉพาะ path /uploads
       },
     ],
