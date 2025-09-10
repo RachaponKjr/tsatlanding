@@ -22,7 +22,7 @@
     COPY --from=builder /app/package.json ./package.json
     
     ENV NODE_ENV=production
-    ENV API_URL=http://tsat-landing-back:3001  # server-side fetch
+    ENV API_URL=http://tsat-landing-back:3001
     
     EXPOSE 3031
     CMD ["npm", "start"]
