@@ -157,8 +157,6 @@ const page = () => {
     void getCMS();
   }, []);
 
-  console.log(cms, "CMS");
-  console.log(process.env.NEXT_PUBLIC_API_URL, cms?.banner_image);
   return (
     <div className=" p-4 flex flex-col gap-4">
       <h5 className="text-xl font-semibold text-[#1f1f1f]">จัดการหน้าเว็บ</h5>
