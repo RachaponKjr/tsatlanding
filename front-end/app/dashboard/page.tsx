@@ -138,6 +138,7 @@ const page = () => {
         {
           method: "PATCH",
           body: formData,
+          credentials: "include",
         }
       );
 

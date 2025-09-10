@@ -20,13 +20,13 @@ app.use(express.json());
 app.use(
   cors({
     origin: 'http://150.95.26.51:3031',
-    methods: ['GET', 'POST', 'PUT', 'DELETE','PATCH'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     credentials: true,
   }),
 );
 app.use(
   helmet({
-    crossOriginResourcePolicy: { policy: 'cross-origin' }, // สำหรับ static files
+    crossOriginResourcePolicy: { policy: 'cross-origin' },
   }),
 );
 app.use(morgan('combined'));

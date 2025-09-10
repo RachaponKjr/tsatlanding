@@ -80,6 +80,7 @@ const page = () => {
         {
           method: "PATCH",
           body: form,
+          credentials: "include",
         }
       );
 
