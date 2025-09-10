@@ -10,11 +10,8 @@ RUN npm install
 # Copy source code
 COPY . .
 
-# Set build-time env for client (Next.js จะ embed)
 ARG NEXT_PUBLIC_API_URL
 ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
-
-# Build Next.js
 RUN npm run build
 
 # ---- Step 2: Production Stage ----
