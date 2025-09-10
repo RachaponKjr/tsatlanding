@@ -33,10 +33,6 @@ export default function ImageUploadWithPreview({
     };
   }, [previewUrl]);
 
-  console.log("Current previewUrl:", previewUrl);
-  console.log("Preview prop:", preview);
-  console.log("Image file:", image);
-
   const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -85,6 +81,7 @@ export default function ImageUploadWithPreview({
               src={previewUrl}
               alt="Preview"
               fill
+              style={{objectFit:"cover",objectPosition:"center"}}
               className="object-cover w-full h-full"
               onError={(e) => {
                 console.error("Image load error:", e);

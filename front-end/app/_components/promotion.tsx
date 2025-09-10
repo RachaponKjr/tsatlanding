@@ -12,8 +12,7 @@ const Promotion = ({ cms }: { cms: CmsType }) => {
             src={`${process.env.NEXT_PUBLIC_API_URL}${cms.promotion_banner}`}
             alt=""
             fill
-            objectFit="cover"
-            objectPosition="center"
+            style={{objectFit:"cover",objectPosition:"center"}}
           />
         </div>
         <div className="bg-gradient-to-b from-[#C65359] to-[#8F2F34] p-5 md:py-8 md:px-10 flex flex-col items-center md:flex-row gap-4 relative">

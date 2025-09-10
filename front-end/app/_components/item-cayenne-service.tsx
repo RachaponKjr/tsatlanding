@@ -17,8 +17,7 @@ const ItemCayenneService = ({
           src={image || ""}
           alt=""
           fill
-          objectFit="cover"
-          objectPosition="center"
+          style={{objectFit:"cover",objectPosition:"center"}}
           loading="lazy"
         />
       </div>
