@@ -10,7 +10,7 @@ services:
     ports:
       - "3031:3000"
     environment:
-      NEXT_PUBLIC_API_URL: http://150.95.26.51:4000
+      # NEXT_PUBLIC_API_URL: http://150.95.26.51:4000
       API_URL: http://tsat-landing-back:3001
     depends_on:
       - backend
