@@ -4,6 +4,7 @@ services:
   frontend:
     build:
       context: ./front-end
+    dockerfile: Dockerfile
     args:
       NEXT_PUBLIC_API_URL: http://150.95.26.51:4000
     container_name: tsat-landing-front
