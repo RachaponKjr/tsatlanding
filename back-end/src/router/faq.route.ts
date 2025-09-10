@@ -1,4 +1,8 @@
 import {
+  authenticateToken,
+  authorizeRoles,
+} from '@/middlewares/auth.middleware';
+import {
   createFaqController,
   delFaqController,
   getFaqController,
@@ -8,9 +12,19 @@ import express from 'express';
 
 const route = express.Router();
 
-route.post('/create', createFaqController);
+route.post(
+  '/create',
+  authenticateToken,
+  authorizeRoles('ADMIN', 'OWNER'),
+  createFaqController,
+);
 route.get('/get-faq', getFaqController);
-route.patch('/update/:id', updateFaqController);
+route.patch(
+  '/update/:id',
+  authenticateToken,
+  authorizeRoles('ADMIN', 'OWNER'),
+  updateFaqController,
+);
 route.delete('/del/:id', delFaqController);
 
 export default route;

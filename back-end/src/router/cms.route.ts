@@ -16,7 +16,7 @@ const upload = createMulterUpload('cms');
 router.post(
   '/create-cms',
   authenticateToken,
-  authorizeRoles('OWNER', 'ADMIN'),
+  authorizeRoles('ADMIN', 'OWNER'),
   upload.fields([
     { name: 'banner', maxCount: 1 },
     { name: 'bannermobile', maxCount: 1 },
@@ -36,7 +36,7 @@ router.post(
 router.patch(
   '/update-cms/:id',
   authenticateToken,
-  authorizeRoles('OWNER', 'ADMIN'),
+  authorizeRoles('ADMIN', 'OWNER'),
   upload.fields([
     { name: 'banner', maxCount: 1 },
     { name: 'bannermobile', maxCount: 1 },

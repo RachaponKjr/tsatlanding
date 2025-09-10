@@ -13,7 +13,7 @@ router.get('/get-contact', getContactController);
 router.patch(
   '/update-contact/:id',
   authenticateToken,
-  authorizeRoles('OWNER', 'ADMIN'),
+  authorizeRoles('ADMIN', 'OWNER'),
   updateContactController,
 );
 
