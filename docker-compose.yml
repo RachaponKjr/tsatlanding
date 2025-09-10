@@ -20,7 +20,7 @@ services:
       context: ./back-end
     container_name: tsat-landing-back
     ports:
-      - "4000:4000"
+      - "4000:3001"
     environment:
       DATABASE_URL: postgresql://dblanding:H9VBy9ECbAZesKweFR6Rvbbgv@db:5432/dblanding
       JWT_SECRET: G16JugJ3RpYzVQQeAU4ptYcBRXVzKLGd6YHePIS6XTqIrRDoF47j+r8m9wO/pVwP
