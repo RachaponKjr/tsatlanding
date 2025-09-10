@@ -10,11 +10,11 @@
     # Copy source code
     COPY . .
     
-    # Set build-time env for client
+    # Set build-time env for client (Next.js จะ embed)
     ARG NEXT_PUBLIC_API_URL
     ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
     
-    # Build Next.js app
+    # Build Next.js
     RUN npm run build
     
     # ---- Step 2: Production Stage ----
@@ -22,7 +22,7 @@
     
     WORKDIR /app
     
-    # Copy build output and node_modules
+    # Copy build output
     COPY --from=builder /app/.next ./.next
     COPY --from=builder /app/public ./public
     COPY --from=builder /app/node_modules ./node_modules
@@ -30,7 +30,6 @@
     
     # Runtime env
     ENV NODE_ENV=production
-    ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
     ENV API_URL=http://tsat-landing-back:4000
     
     EXPOSE 3031

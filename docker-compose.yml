@@ -5,7 +5,7 @@ services:
     build:
       context: ./front-end
       args:
-        NEXT_PUBLIC_API_URL: http://150.95.26.51:4000
+        NEXT_PUBLIC_API_URL: http://tsat-landing-back:4000
     container_name: tsat-landing-front
     ports:
       - "3031:3000"
