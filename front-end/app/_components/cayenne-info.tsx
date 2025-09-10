@@ -27,7 +27,7 @@ const CayenneInfo = ({
       </div>
       <div className="w-full aspect-[16/6] rounded-[20px] bg-neutral-100 relative overflow-hidden">
         <Image
-          src={`${process.env.NEXT_PUBLIC_API_URL}${cms.section2_banner_url}`}
+          src={`http://150.95.26.51:4000${cms.section2_banner_url}`}
           alt=""
           fill
           style={{objectFit:"cover",objectPosition:"center"}}
