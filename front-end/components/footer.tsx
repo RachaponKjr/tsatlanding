@@ -33,9 +33,11 @@ const Footer = () => {
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/contact/get-contact`,
       {
         method: "GET",
+        credentials: "include",
       }
     );
     const data = await res.json();
+    console.log(data);
     if (res.ok) {
       setContact(data.data);
     }
