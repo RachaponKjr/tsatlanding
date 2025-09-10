@@ -19,7 +19,8 @@ const apiVersion = '/api/v1';
 app.use(express.json());
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: 'http://150.95.26.51:3031',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   }),
 );
