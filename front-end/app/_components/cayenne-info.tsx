@@ -14,6 +14,7 @@ const CayenneInfo = ({
   cms: CmsType;
   contact: ContactProps;
 }) => {
+  console.log(`${process.env.NEXT_PUBLIC_API_URL}${cms.section2_banner_url}`);
   return (
     <div className="py-10 md:py-20 container mx-auto bg-white flex flex-col gap-4 px-4 md:px-0">
       <div className="flex flex-col gap-2 justify-center items-center">
@@ -30,7 +31,7 @@ const CayenneInfo = ({
           src={`${process.env.NEXT_PUBLIC_API_URL}${cms.section2_banner_url}`}
           alt=""
           fill
-          style={{objectFit:"cover",objectPosition:"center"}}
+          style={{ objectFit: "cover", objectPosition: "center" }}
           loading="lazy"
         />
       </div>
