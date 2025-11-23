@@ -428,7 +428,7 @@ const page = () => {
         <ImageUploadWithPreview
           preview={
             cms?.banner_image
-              ? `${process.env.NEXT_PUBLIC_API_URL}${cms.banner_image}`
+              ? `/landing-uploads${cms.banner_image}`
               : undefined
           }
           onChange={setBanner}
@@ -437,7 +437,7 @@ const page = () => {
         <ImageUploadWithPreview
           preview={
             cms?.banner_image
-              ? `${process.env.NEXT_PUBLIC_API_URL}${cms.bannermobile}`
+              ? `/landing-uploads${cms.bannermobile}`
               : undefined
           }
           onChange={setBannerMobile}
@@ -445,9 +445,7 @@ const page = () => {
         />
         <ImageUploadWithPreview
           preview={
-            cms?.banner_image
-              ? `${process.env.NEXT_PUBLIC_API_URL}${cms.logo_image}`
-              : undefined
+            cms?.banner_image ? `/landing-uploads${cms.logo_image}` : undefined
           }
           onChange={setLogo}
           title="รูป Logo"
@@ -455,7 +453,7 @@ const page = () => {
         <ImageUploadWithPreview
           preview={
             cms?.banner_image
-              ? `${process.env.NEXT_PUBLIC_API_URL}${cms.section2_banner_url}`
+              ? `/landing-uploads${cms.section2_banner_url}`
               : undefined
           }
           onChange={setBanner2}
@@ -464,7 +462,7 @@ const page = () => {
         <ImageUploadWithPreview
           preview={
             cms?.banner_image
-              ? `${process.env.NEXT_PUBLIC_API_URL}${cms.section3_item1_image}`
+              ? `/landing-uploads${cms.section3_item1_image}`
               : undefined
           }
           onChange={setItem1}
@@ -473,7 +471,7 @@ const page = () => {
         <ImageUploadWithPreview
           preview={
             cms?.banner_image
-              ? `${process.env.NEXT_PUBLIC_API_URL}${cms.section3_item2_image}`
+              ? `/landing-uploads${cms.section3_item2_image}`
               : undefined
           }
           onChange={setItem2}
@@ -482,7 +480,7 @@ const page = () => {
         <ImageUploadWithPreview
           preview={
             cms?.banner_image
-              ? `${process.env.NEXT_PUBLIC_API_URL}${cms.section3_item3_image}`
+              ? `/landing-uploads${cms.section3_item3_image}`
               : undefined
           }
           onChange={setItem3}
@@ -491,7 +489,7 @@ const page = () => {
         <ImageUploadWithPreview
           preview={
             cms?.banner_image
-              ? `${process.env.NEXT_PUBLIC_API_URL}${cms.promotion_banner}`
+              ? `/landing-uploads${cms.promotion_banner}`
               : undefined
           }
           onChange={setPromotionBanner}
@@ -500,7 +498,7 @@ const page = () => {
         <ImageUploadWithPreview
           preview={
             cms?.banner_image
-              ? `${process.env.NEXT_PUBLIC_API_URL}${cms.promotion_item_image}`
+              ? `/landing-uploads${cms.promotion_item_image}`
               : undefined
           }
           onChange={setPromotionItem}
@@ -509,7 +507,7 @@ const page = () => {
         <ImageUploadWithPreview
           preview={
             cms?.banner_image
-              ? `${process.env.NEXT_PUBLIC_API_URL}${cms.icon_service_one}`
+              ? `/landing-uploads${cms.icon_service_one}`
               : undefined
           }
           onChange={setIconServiceOne}
@@ -518,7 +516,7 @@ const page = () => {
         <ImageUploadWithPreview
           preview={
             cms?.banner_image
-              ? `${process.env.NEXT_PUBLIC_API_URL}${cms.icon_service_two}`
+              ? `/landing-uploads${cms.icon_service_two}`
               : undefined
           }
           onChange={setIconServiceTwo}
@@ -527,7 +525,7 @@ const page = () => {
         <ImageUploadWithPreview
           preview={
             cms?.banner_image
-              ? `${process.env.NEXT_PUBLIC_API_URL}${cms.icon_service_three}`
+              ? `/landing-uploads${cms.icon_service_three}`
               : undefined
           }
           onChange={setIconServiceThree}
@@ -535,9 +533,7 @@ const page = () => {
         />
         <ImageUploadWithPreview
           preview={
-            cms?.banner_image
-              ? `${process.env.NEXT_PUBLIC_API_URL}${cms.about_image}`
-              : undefined
+            cms?.banner_image ? `/landing-uploads${cms.about_image}` : undefined
           }
           onChange={setAboutimage}
           title="รูปรถ"

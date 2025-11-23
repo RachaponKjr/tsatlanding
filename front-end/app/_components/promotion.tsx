@@ -9,23 +9,23 @@ const Promotion = ({ cms }: { cms: CmsType }) => {
       <div className="w-full bg-red-300 h-max rounded-lg overflow-hidden">
         <div className="w-full aspect-video md:min-h-[331px] relative">
           <Image
-            src={`${process.env.NEXT_PUBLIC_API_URL}${cms.promotion_banner}`}
+            src={`/landing-uploads${cms.promotion_banner}`}
             alt=""
             fill
-            style={{objectFit:"cover",objectPosition:"center"}}
+            style={{ objectFit: "cover", objectPosition: "center" }}
           />
         </div>
         <div className="bg-gradient-to-b from-[#C65359] to-[#8F2F34] p-5 md:py-8 md:px-10 flex flex-col items-center md:flex-row gap-4 relative">
           <div className="flex flex-col gap-3 text-white max-w-xl">
             <h6 className="text-2xl md:text-3xl font-bold ">
-             {cms.promotion_head}
+              {cms.promotion_head}
             </h6>
             <p className="text-base md:text-xl font-medium">
               {cms.promotion_detail}
             </p>
           </div>
           <Image
-            src={`${process.env.NEXT_PUBLIC_API_URL}${cms.promotion_item_image}`}
+            src={`/landing-uploads${cms.promotion_item_image}`}
             alt=""
             width={270}
             height={270}

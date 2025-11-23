@@ -28,17 +28,17 @@ const CayenneService = ({
         {/* Grid 3 Item */}
         <div className="flex flex-col md:grid grid-cols-3 gap-10 md:gap-8">
           <ItemCayenneService
-            image={`${process.env.NEXT_PUBLIC_API_URL}${cms.section3_item1_image}`}
+            image={`/landing-uploads${cms.section3_item1_image}`}
             detail={cms.section3_item1_sub}
             title={cms.section3_item1_header}
           />
           <ItemCayenneService
-            image={`${process.env.NEXT_PUBLIC_API_URL}${cms.section3_item2_image}`}
+            image={`/landing-uploads${cms.section3_item2_image}`}
             detail={cms.section3_item2_sub}
             title={cms.section3_item2_header}
           />
           <ItemCayenneService
-            image={`${process.env.NEXT_PUBLIC_API_URL}${cms.section3_item3_image}`}
+            image={`/landing-uploads${cms.section3_item3_image}`}
             detail={cms.section3_item3_sub}
             title={cms.section3_item3_header}
           />

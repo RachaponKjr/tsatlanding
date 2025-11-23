@@ -189,7 +189,7 @@ const page = () => {
           />
           <ImageUploadWithPreview
             onChange={setOgImage}
-            preview={`http://localhost:3001${seo.ogImage}`}
+            preview={`/landing-uploads${seo.ogImage}`}
             title="ogImage"
           />
         </div>
@@ -260,7 +260,7 @@ const page = () => {
           />
           <ImageUploadWithPreview
             onChange={setTwitterOgImage}
-            preview={`http://localhost:3001${seo.twitterImage}`}
+            preview={`/landing-uploads${seo.twitterImage}`}
             title="twitterImage"
           />
         </div>
