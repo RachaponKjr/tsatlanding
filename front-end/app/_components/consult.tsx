@@ -50,7 +50,7 @@ const Consult = ({ cms, contact }: { cms: CmsType; contact: ContactProps }) => {
         <div className="flex-1 flex flex-col gap-5 md:gap-10 ">
           <div className="flex items-center gap-7">
             <Image
-              src={`${process.env.NEXT_PUBLIC_API_URL}${cms.icon_service_one}`}
+              src={`/landing-uploads${cms.icon_service_one}`}
               alt=""
               width={70}
               height={70}
@@ -68,7 +68,7 @@ const Consult = ({ cms, contact }: { cms: CmsType; contact: ContactProps }) => {
           </div>
           <div className="flex items-center gap-7">
             <Image
-              src={`${process.env.NEXT_PUBLIC_API_URL}${cms.icon_service_two}`}
+              src={`/landing-uploads${cms.icon_service_two}`}
               alt=""
               width={70}
               height={70}
@@ -86,7 +86,7 @@ const Consult = ({ cms, contact }: { cms: CmsType; contact: ContactProps }) => {
           </div>
           <div className="flex items-center gap-7">
             <Image
-              src={`${process.env.NEXT_PUBLIC_API_URL}${cms.icon_service_three}`}
+              src={`/landing-uploads${cms.icon_service_three}`}
               alt=""
               width={70}
               height={70}

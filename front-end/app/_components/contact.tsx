@@ -13,7 +13,10 @@ const Contact = () => {
         <h2 className="text-xl md:text-3xl">
           เข้าชมเว็บไซต์เพื่อดูบริการด้านอื่นๆ
         </h2>
-        <Link href={"#"} className="text-sm md;text-[22px] cursor-pointer">
+        <Link
+          href={"https://topserviceautotechnic.com"}
+          className="text-sm md;text-[22px] cursor-pointer"
+        >
           www.topserviceautotechnic.com →
         </Link>
       </div>
@@ -26,7 +29,7 @@ const Contact = () => {
           </Button>
         </div>
         <div className="flex flex-col justify-center items-center gap-1 z-10">
-          <Image src={image2} alt="" width={500} height={500} loading="lazy"/>
+          <Image src={image2} alt="" width={500} height={500} loading="lazy" />
           <span className="text-[#8F2F34] font-semibold">
             สาขานิมิตรใหม่ 61
           </span>

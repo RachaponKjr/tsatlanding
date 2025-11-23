@@ -50,7 +50,7 @@ const Confidence = ({
       </div>
 
       <Image
-        src={`${process.env.NEXT_PUBLIC_API_URL}${cms.about_image}`}
+        src={`/landing-uploads${cms.about_image}`}
         alt=""
         width={600}
         height={600}
