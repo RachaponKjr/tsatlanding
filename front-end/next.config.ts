@@ -13,6 +13,8 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  basePath: "/landing",
+  assetPrefix: "/landing",
 };
 
 export default nextConfig;
