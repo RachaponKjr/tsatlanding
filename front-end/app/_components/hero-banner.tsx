@@ -18,13 +18,13 @@ const HeroBanner = ({ cms }: { cms: CmsType }) => {
       <div
         className="w-full h-full bg-cover bg-center absolute z-0 hidden md:block"
         style={{
-          backgroundImage: `url(${process.env.NEXT_PUBLIC_API_URL}${cms.banner_image})`,
+          backgroundImage: `url(/landing-uploads${cms.banner_image})`,
         }}
       />
       <div
         className="w-full h-full bg-cover bg-center absolute z-0 block md:hidden"
         style={{
-          backgroundImage: `url(${process.env.NEXT_PUBLIC_API_URL}${cms.bannermobile})`,
+          backgroundImage: `url(/landing-uploads${cms.bannermobile})`,
         }}
       />
       <div className="text-white flex flex-col gap-1 justify-center items-center pt-[100px] px-4 md:px-0 !z-50 relative">
