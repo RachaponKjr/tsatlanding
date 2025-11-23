@@ -15,6 +15,7 @@ const nextConfig: NextConfig = {
   },
   basePath: "/landing",
   assetPrefix: "/landing",
+  trailingSlash: true,
 };
 
 export default nextConfig;
