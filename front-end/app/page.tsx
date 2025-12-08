@@ -10,10 +10,9 @@ import Confidence from "./_components/confidence";
 import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await fetch(
-    `${process.env.API_URL}/api/v1/seopage/get-seo-page`,
-    { method: "GET" }
-  ).then((r) => r.json());
+  const { data } = await fetch(`/api/landing/seopage/get-seo-page`, {
+    method: "GET",
+  }).then((r) => r.json());
   return {
     title: data.title,
     description: data.description,
