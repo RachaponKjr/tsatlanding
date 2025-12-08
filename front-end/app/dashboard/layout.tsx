@@ -11,7 +11,7 @@ export default function DashboardLayout({
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
   const router = useRouter();
   const checkToken = useCallback(async () => {
-    await fetch(`/api/landing/user/check-token`, {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/user/check-token`, {
       method: "POST",
       credentials: "include",
     })

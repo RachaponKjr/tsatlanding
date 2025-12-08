@@ -33,9 +33,12 @@ const page = () => {
 
   const getSeo = useCallback(async () => {
     try {
-      const res = await fetch(`/api/landing/seopage/get-seo-page`, {
-        method: "GET",
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/seopage/get-seo-page`,
+        {
+          method: "GET",
+        }
+      );
 
       if (!res.ok) {
         throw new Error(`Fetch failed with status ${res.status}`);
@@ -75,7 +78,7 @@ const page = () => {
       }
 
       const res = await fetch(
-        `http://localhost:3001/api/v1/seopage/update-seo-page/${seo.id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/seopage/update-seo-page/${seo.id}`,
         {
           method: "PATCH",
           body: form,

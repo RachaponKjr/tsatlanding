@@ -54,13 +54,16 @@ export default function UsersPage() {
 
   // ดึงข้อมูลผู้ใช้
   const getUsers = useCallback(async () => {
-    const res = await fetch(`/api/landing/user/get-users`, {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        "Cache-Control": "no-cache",
-      },
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/user/get-users`,
+      {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          "Cache-Control": "no-cache",
+        },
+      }
+    );
     const data = await res.json();
     if (res.ok) {
       setUsers(data.data);
@@ -84,14 +87,17 @@ export default function UsersPage() {
       return;
     }
 
-    const res = await fetch(`/api/landing/user/create-user`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(addUser),
-      credentials: "include",
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/user/create-user`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(addUser),
+        credentials: "include",
+      }
+    );
 
     const data = await res.json();
     if (res.ok) {
@@ -116,14 +122,17 @@ export default function UsersPage() {
       role: editingUser.role,
     };
 
-    const res = await fetch(`/api/landing/user/update-user/${editingUser.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-      credentials: "include",
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/user/update-user/${editingUser.id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+        credentials: "include",
+      }
+    );
 
     const data = await res.json();
     if (res.ok) {
