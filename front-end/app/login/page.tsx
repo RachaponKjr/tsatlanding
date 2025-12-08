@@ -29,7 +29,7 @@ export default function LoginPage() {
       console.error("Login failed:", error);
     } else {
       toast("เข้าสู่ระบบสำเร็จ", { className: "!text-green-500" });
-      router.push("/dashboard");
+      router.push("/dashboard-landing");
     }
   };
   return (
