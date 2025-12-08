@@ -28,6 +28,7 @@ const page = () => {
     const res = await fetch(`/api/landing/cms/get-cms`, { method: "GET" });
     if (res.ok) {
       const { data } = await res.json();
+      console.log(data, "CMS!");
       setCms(data);
     }
   }, []);
