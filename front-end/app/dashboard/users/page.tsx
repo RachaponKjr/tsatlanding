@@ -65,7 +65,7 @@ export default function UsersPage() {
     if (res.ok) {
       setUsers(data.data);
     } else {
-      router.push(data.redirect);
+      router.push(data.redirect || `/login`);
       toast("ไม่สามารถดึงข้อมูลผู้ใช้ได้ !", { className: "!text-red-500" });
     }
   }, [router]);
