@@ -14,7 +14,6 @@ const nextConfig: NextConfig = {
     ],
   },
   basePath: "/landing",
-  assetPrefix: "/landing",
   trailingSlash: true,
 };
 
