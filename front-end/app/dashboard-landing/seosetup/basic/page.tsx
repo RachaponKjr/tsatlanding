@@ -33,10 +33,9 @@ const page = () => {
 
   const getSeo = useCallback(async () => {
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/seopage/get-seo-page`,
-        { method: "GET" }
-      );
+      const res = await fetch(`/api/landing/seopage/get-seo-page`, {
+        method: "GET",
+      });
 
       if (!res.ok) {
         throw new Error(`Fetch failed with status ${res.status}`);

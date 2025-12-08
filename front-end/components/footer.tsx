@@ -29,13 +29,10 @@ const Footer = () => {
   const [contact, setContact] = useState<ContactProps>();
 
   const getContact = useCallback(async () => {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/contact/get-contact`,
-      {
-        method: "GET",
-        credentials: "include",
-      }
-    );
+    const res = await fetch(`/api/landing/contact/get-contact`, {
+      method: "GET",
+      credentials: "include",
+    });
     const data = await res.json();
     if (res.ok) {
       setContact(data.data);

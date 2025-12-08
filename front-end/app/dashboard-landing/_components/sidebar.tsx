@@ -41,19 +41,19 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen = true, onToggle }) => {
       id: "cms",
       label: "จัดการหน้าเว็บ",
       icon: <File className="w-5 h-5" />,
-      href: "/dashboard",
+      href: "/dashboard-landing",
     },
     {
       id: "faq",
       label: "จัดการช้อมูล FAQ",
       icon: <BadgeQuestionMark className="w-5 h-5" />,
-      href: "/dashboard/faq",
+      href: "/dashboard-landing/faq",
     },
     {
       id: "contact",
       label: "จัดการช้อมูลการติดต่อ",
       icon: <Contact className="w-5 h-5" />,
-      href: "/dashboard/contact",
+      href: "/dashboard-landing/contact",
     },
     {
       id: "seosetup",
@@ -65,7 +65,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen = true, onToggle }) => {
           id: "reports",
           label: "จัดการ SEO พื้นฐาน",
           icon: <FileText className="w-4 h-4" />,
-          href: "/dashboard/seosetup/basic",
+          href: "/dashboard-landing/seosetup/basic",
         },
       ],
     },
@@ -73,7 +73,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen = true, onToggle }) => {
       id: "usersetup",
       label: "จัดการผู้ใช้",
       icon: <Users className="w-5 h-5" />,
-      href: "/dashboard/users",
+      href: "/dashboard-landing/users",
     },
   ];
 
@@ -88,7 +88,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen = true, onToggle }) => {
   const logout = async () => {
     try {
       // เรียก API logout ถ้ามี หรือแค่ล้าง cookie ที่ client
-      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/user/logout`, {
+      await fetch(`/api/landing/user/logout`, {
         method: "POST",
         credentials: "include", // สำคัญสำหรับ cookie
       });

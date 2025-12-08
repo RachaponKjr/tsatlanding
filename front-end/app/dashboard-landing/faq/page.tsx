@@ -28,10 +28,7 @@ const Page = () => {
 
   // โหลดข้อมูล FAQ
   const getFAQ = useCallback(async () => {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/faq/get-faq`,
-      { method: "GET" }
-    );
+    const res = await fetch(`/api/landing/faq/get-faq`, { method: "GET" });
     if (res.ok) {
       const data = await res.json();
       setFaqs(data.data);
@@ -47,15 +44,12 @@ const Page = () => {
         title: tempQuestion,
         detail: tempAnswer,
       };
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/faq/create`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-          credentials: "include",
-        }
-      );
+      const res = await fetch(`/api/landing/faq/create`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        credentials: "include",
+      });
       if (res.ok) {
         toast.success("สร้างสำเร็จ!", { className: "!text-green-400" });
         closeDialog();
@@ -75,15 +69,12 @@ const Page = () => {
         title: tempQuestion,
         detail: tempAnswer,
       };
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/faq/update/${id}`,
-        {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-          credentials: "include",
-        }
-      );
+      const res = await fetch(`/api/landing/faq/update/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        credentials: "include",
+      });
       if (res.ok) {
         toast.success("อัพเดทสำเร็จ", { className: "!text-green-500" });
         closeDialog();
@@ -99,13 +90,10 @@ const Page = () => {
   // ลบ
   const delFaq = async (id: number) => {
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/faq/del/${id}`,
-        {
-          method: "DELETE",
-          credentials: "include",
-        }
-      );
+      const res = await fetch(`/api/landing/faq/del/${id}`, {
+        method: "DELETE",
+        credentials: "include",
+      });
       if (res.ok) {
         toast.success("ลบข้อมูลเรียบร้อยเเล้ว", {
           className: "text-green-500",
@@ -204,7 +192,11 @@ const Page = () => {
             />
           </div>
           <DialogFooter>
-            <Button onClick={() => editingFaq ? updateFAQ(editingFaq.id) : createFAQ()}>
+            <Button
+              onClick={() =>
+                editingFaq ? updateFAQ(editingFaq.id) : createFAQ()
+              }
+            >
               {editingFaq ? "อัพเดท" : "บันทึก"}
             </Button>
           </DialogFooter>
@@ -212,7 +204,10 @@ const Page = () => {
       </Dialog>
 
       {/* Dialog Confirm Delete */}
-      <Dialog open={!!confirmDelete} onOpenChange={() => setConfirmDelete(null)}>
+      <Dialog
+        open={!!confirmDelete}
+        onOpenChange={() => setConfirmDelete(null)}
+      >
         <DialogContent>
           <DialogHeader>
             <DialogTitle>ยืนยันการลบ</DialogTitle>

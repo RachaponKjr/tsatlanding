@@ -9,13 +9,10 @@ const FAQ = async () => {
   // ดึงข้อมูลจาก API
   let data: { id: number; title: string; detail: string }[] = [];
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/faq/get-faq`,
-      {
-        method: "GET",
-        cache: "no-store",
-      }
-    );
+    const res = await fetch(`/api/landing/faq/get-faq`, {
+      method: "GET",
+      cache: "no-store",
+    });
     if (res.ok) {
       const json = await res.json();
       data = json.data;
