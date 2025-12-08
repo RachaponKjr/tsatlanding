@@ -52,19 +52,16 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-  const apiUrl = `${process.env.API_URL}/api/v1/cms/get-cms`;
+  const apiUrl = `/api/landing/cms/get-cms`;
   const { data } = await fetch(`${apiUrl}`, {
     method: "GET",
     cache: "no-cache",
   }).then((r) => r.json());
 
-  const { data: contact } = await fetch(
-    `${process.env.API_URL}/api/v1/contact/get-contact`,
-    {
-      method: "GET",
-      cache: "no-cache",
-    }
-  ).then((r) => r.json());
+  const { data: contact } = await fetch(`/api/landing/contact/get-contact`, {
+    method: "GET",
+    cache: "no-cache",
+  }).then((r) => r.json());
 
   return (
     <>
