@@ -94,7 +94,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen = true, onToggle }) => {
       });
 
       // redirect ไปหน้า login
-      router.push("/admin-login");
+      router.push("/login");
       toast("ออกจากระบบเรียบร้อย", { className: "!text-green-500" });
     } catch (err) {
       console.error(err);

@@ -19,7 +19,7 @@ export default function DashboardLayout({
         const data = await res.json();
         if (res.ok) {
         } else {
-          router.push(data.redirect);
+          router.push(`/landing/${data.redirect}`);
         }
       })
       .catch((err) => {

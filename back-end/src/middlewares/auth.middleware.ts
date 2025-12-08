@@ -19,13 +19,11 @@ export const authenticateToken = (
 ) => {
   const token = req.cookies.token;
   if (!token) {
-    return res
-      .status(401)
-      .json({
-        success: false,
-        message: 'No token provided',
-        redirect: '/admin-login',
-      });
+    return res.status(401).json({
+      success: false,
+      message: 'No token provided',
+      redirect: '/login',
+    });
   }
 
   try {
@@ -33,13 +31,11 @@ export const authenticateToken = (
     (req as any).user = decoded; // เก็บข้อมูล user ลง req
     next();
   } catch (err) {
-    return res
-      .status(403)
-      .json({
-        success: false,
-        message: 'Invalid or expired token',
-        redirect: '/admin-login',
-      });
+    return res.status(403).json({
+      success: false,
+      message: 'Invalid or expired token',
+      redirect: '/login',
+    });
   }
 };
 
