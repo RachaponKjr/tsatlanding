@@ -49,8 +49,8 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 # 5. สลับไปใช้ User ธรรมดา (สำคัญที่สุด!)
 USER nextjs
 
-EXPOSE 3031
-ENV PORT=3031
+EXPOSE 3000
+ENV PORT=3000
 
 # ใช้ node server.js แทน npm start (สำหรับ standalone)
 CMD ["node", "server.js"]
