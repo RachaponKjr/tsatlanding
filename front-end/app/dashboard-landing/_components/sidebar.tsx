@@ -43,7 +43,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
       id: "cms",
       label: "ภาพรวมระบบ",
       icon: <LayoutDashboard className="w-5 h-5" />,
-      href: "/dashboard-landing",
+      href: "/dashboard",
     },
     {
       id: "web-manage",
@@ -55,13 +55,13 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
           id: "faq",
           label: "ข้อมูล FAQ",
           icon: <BadgeQuestionMark className="w-4 h-4" />,
-          href: "/dashboard-landing/faq",
+          href: "/dashboard/faq",
         },
         {
           id: "contact",
           label: "ข้อมูลการติดต่อ",
           icon: <Contact className="w-4 h-4" />,
-          href: "/dashboard-landing/contact",
+          href: "/dashboard/contact",
         },
       ],
     },
@@ -75,7 +75,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
           id: "reports",
           label: "SEO พื้นฐาน",
           icon: <FileText className="w-4 h-4" />,
-          href: "/dashboard-landing/seosetup/basic",
+          href: "/dashboard/seosetup/basic",
         },
       ],
     },
@@ -83,7 +83,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
       id: "usersetup",
       label: "ผู้ใช้งานระบบ",
       icon: <Users className="w-5 h-5" />,
-      href: "/dashboard-landing/users",
+      href: "/dashboard/users",
     },
   ];
 

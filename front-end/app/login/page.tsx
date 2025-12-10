@@ -43,7 +43,7 @@ export default function LoginPage() {
         // กรณีสำเร็จ
         toast.success("เข้าสู่ระบบสำเร็จ");
         // ย้ายไปหน้า Dashboard ใหม่ที่คุณตั้งไว้
-        router.push("/dashboard-landing");
+        router.push("/dashboard");
       }
     } catch (error) {
       // กรณี Network Error (เช่น ต่อ Server ไม่ได้, เน็ตหลุด, CORS)
