@@ -5,13 +5,13 @@ services:
     build:
       context: ./front-end
       args:
-        NEXT_PUBLIC_API_URL: https://topserviceautotechnic.com/api/landing
+        NEXT_PUBLIC_API_URL: /api/landing
     container_name: tsat-landing-front
     ports:
       - "3031:3000"
     environment:
-      NEXT_PUBLIC_API_URL: https://topserviceautotechnic.com/api/landing
-      API_URL: https://topserviceautotechnic.com/api/landing
+      NEXT_PUBLIC_API_URL: /api/landing
+      API_URL: http://tsat-landing-back:3001/api/v1
     depends_on:
       - backend
     networks:
