@@ -18,7 +18,8 @@ COPY . .
 
 # รับค่า Environment ตอน Build (ถูกต้องแล้วครับ)
 ARG NEXT_PUBLIC_API_URL
-ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+# ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+ENV NEXT_PUBLIC_API_URL=https://topserviceautotechnic.com/api/landing
 
 # ปิด Telemetry และจำกัด Ram ตอน Build กันเครื่องค้าง
 ENV NEXT_TELEMETRY_DISABLED 1
@@ -32,7 +33,7 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 # 2. Server-side API URL (เรียกหา Backend ภายใน Docker network)
-ENV API_URL=http://tsat-landing-back:3001
+ENV API_URL=https://topserviceautotechnic.com/api/landing
 
 # 3. สร้าง User ความปลอดภัยสูง (กัน Hacker)
 RUN addgroup --system --gid 1001 nodejs
