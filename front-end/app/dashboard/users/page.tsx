@@ -55,7 +55,7 @@ export default function UsersPage() {
   // ดึงข้อมูลผู้ใช้
   const getUsers = useCallback(async () => {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/user/get-users`,
+      `${process.env.NEXT_PUBLIC_API_URL}/user/get-users`,
       {
         method: "GET",
         credentials: "include",
@@ -88,7 +88,7 @@ export default function UsersPage() {
     }
 
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/user/create-user`,
+      `${process.env.NEXT_PUBLIC_API_URL}/user/create-user`,
       {
         method: "POST",
         headers: {
@@ -123,7 +123,7 @@ export default function UsersPage() {
     };
 
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/user/update-user/${editingUser.id}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/user/update-user/${editingUser.id}`,
       {
         method: "PATCH",
         headers: {

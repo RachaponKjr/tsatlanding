@@ -24,10 +24,13 @@ const Page = () => {
   // โหลดข้อมูลจาก API
   const getContact = async () => {
     try {
-      const res = await fetch(`/api/landing/contact/get-contact`, {
-        method: "GET",
-        cache: "no-store",
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/contact/get-contact`,
+        {
+          method: "GET",
+          cache: "no-store",
+        }
+      );
       if (res.ok) {
         const data = await res.json();
         setContact(data.data);
@@ -44,7 +47,7 @@ const Page = () => {
     if (!contact) return;
     try {
       const res = await fetch(
-        `/api/landing/contact/update-contact/${contact.id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/contact/update-contact/${contact.id}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },

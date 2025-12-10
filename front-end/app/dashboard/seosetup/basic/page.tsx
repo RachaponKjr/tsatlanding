@@ -34,7 +34,7 @@ const page = () => {
   const getSeo = useCallback(async () => {
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/seopage/get-seo-page`,
+        `${process.env.NEXT_PUBLIC_API_URL}/seopage/get-seo-page`,
         {
           method: "GET",
         }
@@ -78,7 +78,7 @@ const page = () => {
       }
 
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/seopage/update-seo-page/${seo.id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/seopage/update-seo-page/${seo.id}`,
         {
           method: "PATCH",
           body: form,

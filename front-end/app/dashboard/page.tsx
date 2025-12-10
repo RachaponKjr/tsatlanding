@@ -25,10 +25,9 @@ const page = () => {
   const [aboutimage, setAboutimage] = useState<File | null>(null);
   const router = useRouter();
   const getCMS = useCallback(async () => {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/cms/get-cms`,
-      { method: "GET" }
-    );
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/cms/get-cms`, {
+      method: "GET",
+    });
     if (res.ok) {
       const { data } = await res.json();
       console.log(data, "CMS!");
@@ -135,7 +134,7 @@ const page = () => {
       }
 
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/cms/update-cms/${cms?.id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/cms/update-cms/${cms?.id}`,
         {
           method: "PATCH",
           body: formData,

@@ -11,7 +11,7 @@ export default function DashboardLayout({
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
   const router = useRouter();
   const checkToken = useCallback(async () => {
-    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/user/check-token`, {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/check-token`, {
       method: "POST",
       credentials: "include",
     })
@@ -19,7 +19,7 @@ export default function DashboardLayout({
         const data = await res.json();
         if (res.ok) {
         } else {
-          router.push(`${data.redirect}` || `/login`);
+          router.push(`${data.redirect}` || `/landing/login`);
         }
       })
       .catch((err) => {

@@ -10,10 +10,9 @@ import Confidence from "./_components/confidence";
 import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await fetch(
-    `${process.env.API_URL}/api/v1/seopage/get-seo-page`,
-    { method: "GET" }
-  ).then((r) => r.json());
+  const { data } = await fetch(`${process.env.API_URL}/seopage/get-seo-page`, {
+    method: "GET",
+  }).then((r) => r.json());
   return {
     title: data.title,
     description: data.description,
@@ -52,14 +51,14 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-  const apiUrl = `${process.env.API_URL}/api/v1/cms/get-cms`;
+  const apiUrl = `${process.env.API_URL}/cms/get-cms`;
   const { data } = await fetch(`${apiUrl}`, {
     method: "GET",
     cache: "no-cache",
   }).then((r) => r.json());
 
   const { data: contact } = await fetch(
-    `${process.env.API_URL}/api/v1/contact/get-contact`,
+    `${process.env.API_URL}/contact/get-contact`,
     {
       method: "GET",
       cache: "no-cache",

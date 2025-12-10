@@ -112,7 +112,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
 
   const logout = async () => {
     try {
-      await fetch(`/api/landing/user/logout`, {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/logout`, {
         method: "POST",
         credentials: "include",
       });
