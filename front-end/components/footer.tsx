@@ -48,7 +48,7 @@ const Footer = () => {
   return (
     <footer
       className={cn(
-        path === "/login/" || path.startsWith("/dashboard-landing/")
+        path === "/login/" || path.startsWith("/dashboard/")
           ? "hidden"
           : "block",
         "bg-[#8F2F34] text-white py-6 md:py-12 px-6 sm:px-12"

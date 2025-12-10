@@ -10,8 +10,8 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
   // directUrl = env("DIRECT_URL")
 }
 
@@ -78,15 +78,15 @@ model Page {
   slug String? @unique
 
   // Basic SEO
-  title       String
-  description String?
+  title       String?  @default("Top Service Auto Technic")
+  description String?  @default("Top Service Auto Technic")
   keywords    String[] // Array of keywords
   canonical   String?
   robots      String?  @default("index,follow")
 
   // Open Graph
-  ogTitle       String?
-  ogDescription String?
+  ogTitle       String? @default("Top Service Auto Technic")
+  ogDescription String? @default("Top Service Auto Technic")
   ogImage       String?
   ogImageAlt    String?
   ogType        String? @default("website")
@@ -96,8 +96,8 @@ model Page {
 
   // Twitter Cards  
   twitterCard        String? @default("summary_large_image")
-  twitterTitle       String?
-  twitterDescription String?
+  twitterTitle       String? @default("Top Service Auto Technic")
+  twitterDescription String? @default("Top Service Auto Technic")
   twitterImage       String?
   twitterSite        String?
   twitterCreator     String?

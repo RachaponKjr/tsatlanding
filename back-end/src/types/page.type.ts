@@ -8,7 +8,8 @@ export const PageCreateSchema = z.object({
       z.string().transform((val) => [val]), // string → array
       z.array(z.string()),
     ])
-    .transform((val) => (Array.isArray(val) ? val : [val])),
+    .transform((val) => (Array.isArray(val) ? val : [val]))
+    .optional(),
   canonical: z.string().optional(),
   robots: z.string().default('index,follow'),
   ogTitle: z.string().optional(),
