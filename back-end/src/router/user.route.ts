@@ -16,8 +16,8 @@ const route = express.Router();
 
 route.post(
   '/create-user',
-  authenticateToken,
-  authorizeRoles('ADMIN', 'OWNER'),
+  // authenticateToken,
+  // authorizeRoles('ADMIN', 'OWNER'),
   createUserController,
 );
 route.post('/check-token', authenticateToken, (req: Request, res: Response) => {
