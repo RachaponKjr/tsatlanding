@@ -9,7 +9,7 @@ const FAQ = async () => {
   // ดึงข้อมูลจาก API
   let data: { id: number; title: string; detail: string }[] = [];
   try {
-    const res = await fetch(`/api/landing/faq/get-faq`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/faq/get-faq`, {
       method: "GET",
       cache: "no-store",
     });
@@ -30,15 +30,16 @@ const FAQ = async () => {
         {data.map((item) => (
           <Dialog key={item.id}>
             <DialogTrigger className="text-start">
-              <ItemBox text={item.title} />
+              <ItemBox text={item?.title} />
             </DialogTrigger>
             <DialogContent className="!max-w-3xl">
               <DialogTitle className="text-[#8F2F34] md:text-3xl">
-                {item.title}
+                {item?.title}
               </DialogTitle>
-              <span className="text-2xl text-[#1f1f1f] font-light">
-                {item.detail}
-              </span>
+              <span
+                className="text-2xl text-[#1f1f1f] font-light"
+                dangerouslySetInnerHTML={{ __html: item?.detail || "" }}
+              />
             </DialogContent>
           </Dialog>
         ))}

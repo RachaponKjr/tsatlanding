@@ -17,9 +17,10 @@ const CayenneService = ({
     <div className="py-[60px] bg-gradient-to-b from-[#999999]/20 to-[#FFFFFF] px-4 md:px-0">
       <div className="container mx-auto flex flex-col gap-6">
         <div className="flex flex-col gap-2 justify-center items-center">
-          <h2 className="text-[#8F2F34] text-xl md:text-3xl font-semibold text-center">
-            {cms.section3_header}
-          </h2>
+          <h2
+            className="text-[#8F2F34] text-xl md:text-3xl font-semibold text-center"
+            dangerouslySetInnerHTML={{ __html: cms.section3_header || "" }}
+          />
           <h3
             className="font-semibold text-xl md:text-2xl leading-relaxed text-[#1f1f1f] text-center"
             dangerouslySetInnerHTML={{ __html: cms.section3_sub || "" }}

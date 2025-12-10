@@ -1,16 +1,17 @@
-'use client'
-import React from 'react'
-import { cn } from '../lib/utils';
+"use client";
+import React, { useMemo } from "react";
+import { cn } from "@/lib/utils";
 
-interface TextareaWithLabelProps {
-  label: string
-  name: string
-  value?: string
-  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
-  placeholder?: string
-  required?: boolean
-  rows?: number
-  className?: string
+interface TextareaWithLabelProps
+  extends Omit<
+    React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+    "onChange" | "value"
+  > {
+  label: string;
+  name: string;
+  value?: string | null;
+  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  helperText?: string; // เพิ่ม prop เผื่ออยากเปลี่ยนข้อความแนะนำ
 }
 
 const TextareaWithLabel: React.FC<TextareaWithLabelProps> = ({
@@ -18,94 +19,74 @@ const TextareaWithLabel: React.FC<TextareaWithLabelProps> = ({
   name,
   value,
   onChange,
-  placeholder,
-  required = false,
-  rows = 4,
-  className
+  required,
+  className,
+  helperText = "กด Enter เพื่อขึ้นบรรทัดใหม่ (ระบบจะแปลงเป็น <br/> อัตโนมัติ)",
+  ...props
 }) => {
+  // แปลงค่าจาก <br/> เป็น \n เพื่อแสดงผลใน textarea
+  const displayValue = useMemo(() => {
+    if (!value) return "";
+    return value.replace(/<br\/>/g, "\n");
+  }, [value]);
 
   const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (!onChange) return;
 
     const newValue = e.target.value;
-    
-    // ตรวจจับ line breaks (\n) และแทรก <br/> เข้าไป
-    const processedValue = newValue.replace(/\n/g, '<br/>');
-    
-    // สร้าง synthetic event ด้วยข้อความที่ประมวลผลแล้ว
+    // แปลง \n กลับเป็น <br/> ก่อนส่งให้ Parent
+    const processedValue = newValue.replace(/\n/g, "<br/>");
+
+    // สร้าง Synthetic Event ปลอมๆ เพื่อส่งกลับไปให้ Parent ใช้งานได้เหมือนปกติ
     const syntheticEvent = {
       ...e,
       target: {
         ...e.target,
-        value: processedValue
-      }
+        value: processedValue,
+        name: name, // สำคัญ: ต้องส่ง name กลับไปด้วยเพื่อให้ Generic Handler ทำงานได้
+      },
     } as React.ChangeEvent<HTMLTextAreaElement>;
-    
+
     onChange(syntheticEvent);
   };
 
-  // แปลง <br/> กลับเป็น \n สำหรับแสดงใน textarea
-  const getDisplayValue = (text: string = '') => {
-    return text.replace(/<br\/>/g, '\n');
-  };
-
   return (
-    <div className={cn('flex flex-col gap-1 w-full', className)}>
-      {/* Label */}
+    <div className={cn("flex flex-col gap-1 w-full", className)}>
       <label htmlFor={name} className="text-sm font-medium text-gray-700">
         {label}
         {required && <span className="text-red-500"> *</span>}
       </label>
 
-      {/* Textarea */}
       <textarea
         id={name}
         name={name}
-        value={getDisplayValue(value)}
+        value={displayValue}
         onChange={handleTextChange}
-        placeholder={placeholder}
-        required={required}
-        rows={rows}
-        className="border h-max border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-[#8F2F34] focus:border-[#8F2F34] resize-y"
+        className="border min-h-[100px] border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-[#8F2F34] focus:border-[#8F2F34] resize-y"
+        {...props}
       />
 
-      {/* Helper text */}
-      <p className="text-xs text-gray-500">
-        กด Enter เพื่อขึ้นบรรทัดใหม่ (จะแปลงเป็น &lt;br/&gt; อัตโนมัติ)
-      </p>
+      <p className="text-xs text-gray-500">{helperText}</p>
 
-      {/* แสดงข้อความจริงที่บันทึก */}
+      {/* Preview Section (Optional: ซ่อนไว้ถ้าไม่จำเป็นต้องดูตลอด) */}
       {value && (
-        <details className="mt-1">
-          <summary className="text-xs text-gray-400 cursor-pointer hover:text-gray-600">
-            ดูข้อความที่จะบันทึก ({(value.match(/<br\/>/g) || []).length} บรรทัด)
+        <details className="mt-1 group">
+          <summary className="text-xs text-blue-600 cursor-pointer hover:text-blue-800 select-none">
+            ดูตัวอย่างการแสดงผลจริง
           </summary>
-          <div className="text-xs bg-gray-50 p-2 rounded mt-1 border break-all font-mono">
-            {value}
-          </div>
-        </details>
-      )}
-
-      {/* Preview การแสดงผลจริง */}
-      {value && (
-        <details className="mt-1">
-          <summary className="text-xs text-blue-600 cursor-pointer hover:text-blue-800">
-            ดูตัวอย่างการแสดงผล
-          </summary>
-          <div className="text-sm bg-blue-50 p-2 rounded mt-1 border">
+          <div className="text-sm bg-blue-50 p-2 rounded mt-1 border text-gray-700">
             {renderTextWithBreaks(value)}
           </div>
         </details>
       )}
     </div>
-  )
-}
+  );
+};
 
-// Helper function สำหรับแสดงผลข้อความที่มี <br/>
-export const renderTextWithBreaks = (text: string) => {
+// Helper function
+export const renderTextWithBreaks = (text?: string | null) => {
   if (!text) return null;
-  
-  return text.split('<br/>').map((line, index, array) => (
+  return text.split("<br/>").map((line, index, array) => (
     <React.Fragment key={index}>
       {line}
       {index < array.length - 1 && <br />}
@@ -113,41 +94,4 @@ export const renderTextWithBreaks = (text: string) => {
   ));
 };
 
-// Hook สำหรับจัดการข้อความ
-export const useTextWithBreaks = () => {
-  // แปลงข้อความปกติให้มี <br/>
-  const convertLineBreaks = (text: string) => {
-    return text.replace(/\n/g, '<br/>');
-  };
-
-  // แปลง <br/> กลับเป็น \n
-  const convertToPlainText = (text: string) => {
-    return text.replace(/<br\/>/g, '\n');
-  };
-
-  // นับจำนวนบรรทัด
-  const countLines = (text: string) => {
-    return (text.match(/<br\/>/g) || []).length + 1;
-  };
-
-  // ลบ <br/> ทั้งหมด
-  const removeAllBreaks = (text: string) => {
-    return text.replace(/<br\/>/g, '');
-  };
-
-  // ตรวจสอบว่ามี line breaks หรือไม่
-  const hasLineBreaks = (text: string) => {
-    return text.includes('<br/>');
-  };
-
-  return {
-    convertLineBreaks,
-    convertToPlainText,
-    countLines,
-    removeAllBreaks,
-    hasLineBreaks,
-    renderTextWithBreaks
-  };
-};
-
-export default TextareaWithLabel
+export default TextareaWithLabel;

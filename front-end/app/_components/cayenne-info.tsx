@@ -17,9 +17,10 @@ const CayenneInfo = ({
   return (
     <div className="py-10 md:py-20 container mx-auto bg-white flex flex-col gap-4 px-4 md:px-0">
       <div className="flex flex-col gap-2 justify-center items-center">
-        <h2 className="text-[#8F2F34] text-xl md:text-3xl font-semibold text-center">
-          {cms.section2_header}
-        </h2>
+        <h2
+          className="text-[#8F2F34] text-xl md:text-3xl font-semibold text-center"
+          dangerouslySetInnerHTML={{ __html: cms.section2_header || "" }}
+        />
         <p
           className="text-base md:text-2xl text-[#1f1f1f] text-center font-light"
           dangerouslySetInnerHTML={{ __html: cms.section2_sub || "" }}

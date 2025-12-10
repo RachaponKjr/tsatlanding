@@ -14,39 +14,39 @@ export async function generateMetadata(): Promise<Metadata> {
     method: "GET",
   }).then((r) => r.json());
   return {
-    title: data.title,
-    description: data.description,
-    keywords: data.keywords,
-    alternates: { canonical: data.canonical ?? undefined },
-    robots: data.robots ?? undefined,
+    title: data?.title,
+    description: data?.description,
+    keywords: data?.keywords,
+    alternates: { canonical: data?.canonical ?? undefined },
+    robots: data?.robots ?? undefined,
 
     openGraph: {
-      title: data.ogTitle ?? data.title,
-      description: data.ogDescription ?? data.description ?? undefined,
-      images: data.ogImage
+      title: data?.ogTitle ?? data?.title,
+      description: data?.ogDescription ?? data?.description ?? undefined,
+      images: data?.ogImage
         ? [
             {
-              url: data.ogImage,
-              alt: data.ogImageAlt ?? "",
+              url: data?.ogImage,
+              alt: data?.ogImageAlt ?? "",
             },
           ]
         : undefined,
-      type: data.ogType ?? "website",
-      url: data.ogUrl ?? undefined,
-      siteName: data.ogSiteName ?? undefined,
-      locale: data.ogLocale ?? "th_TH",
+      type: data?.ogType ?? "website",
+      url: data?.ogUrl ?? undefined,
+      siteName: data?.ogSiteName ?? undefined,
+      locale: data?.ogLocale ?? "th_TH",
     },
 
     twitter: {
-      card: data.twitterCard ?? "summary_large_image",
-      title: data.twitterTitle ?? data.title,
-      description: data.twitterDescription ?? data.description ?? undefined,
-      images: data.twitterImage ? [data.twitterImage] : undefined,
-      site: data.twitterSite ?? undefined,
-      creator: data.twitterCreator ?? undefined,
+      card: data?.twitterCard ?? "summary_large_image",
+      title: data?.twitterTitle ?? data?.title,
+      description: data?.twitterDescription ?? data?.description ?? undefined,
+      images: data?.twitterImage ? [data?.twitterImage] : undefined,
+      site: data?.twitterSite ?? undefined,
+      creator: data?.twitterCreator ?? undefined,
     },
 
-    authors: data.author ? [{ name: data.author }] : undefined,
+    authors: data?.author ? [{ name: data?.author }] : undefined,
   };
 }
 

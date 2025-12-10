@@ -28,6 +28,8 @@ const Footer = () => {
   const router = useRouter();
   const [contact, setContact] = useState<ContactProps>();
 
+  console.log(path);
+
   const getContact = useCallback(async () => {
     const res = await fetch(`/api/landing/contact/get-contact`, {
       method: "GET",
@@ -46,7 +48,7 @@ const Footer = () => {
   return (
     <footer
       className={cn(
-        path === "landing/login" || path.startsWith("landing/dashboard")
+        path === "/login/" || path.startsWith("/dashboard-landing/")
           ? "hidden"
           : "block",
         "bg-[#8F2F34] text-white py-6 md:py-12 px-6 sm:px-12"

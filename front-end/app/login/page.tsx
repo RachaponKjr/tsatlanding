@@ -19,8 +19,6 @@ export default function LoginPage() {
 
     // Debug: เช็คว่า URL ถูกต้องไหม (กด F12 ดู Console)
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-    console.log("Attempting login to:", `${apiUrl}/user/login`);
-
     try {
       const res = await fetch(`${apiUrl}/user/login`, {
         method: "POST",
@@ -33,7 +31,7 @@ export default function LoginPage() {
           password: password,
         }),
       });
-
+      console.log(res);
       if (!res.ok) {
         // กรณี Server ตอบกลับมาว่า Error (400, 401, 500)
         const errorData = await res.json().catch(() => ({})); // กันกรณี json พัง

@@ -14,9 +14,10 @@ const Consult = ({ cms, contact }: { cms: CmsType; contact: ContactProps }) => {
           className="text-2xl md:text-4xl font-bold md:font-semibold text-[#8F2F34] text-center leading-relaxed"
           dangerouslySetInnerHTML={{ __html: cms.consult_head || "" }}
         />
-        <span className="text-[#4f4f4f] text-xl text-center md:text-4xl">
-          {cms.consult_detail}
-        </span>
+        <span
+          className="text-[#4f4f4f] text-xl text-center md:text-4xl"
+          dangerouslySetInnerHTML={{ __html: cms.consult_detail || "" }}
+        />
         <div className="flex justify-center items-center gap-4 mt-2">
           <Button
             onClick={() => window.open(`${contact.web_url}`)}
@@ -40,12 +41,14 @@ const Consult = ({ cms, contact }: { cms: CmsType; contact: ContactProps }) => {
       </div>
       <div className="bg-[#F5F5F5] px-[15px] py-8 md:p-10 rounded-[20px] flex flex-col md:flex-row gap-[40px] md:gap-20">
         <div className="flex-1 flex flex-col gap-3">
-          <h2 className="text-[#8F2F34] font-semibold text-2xl md:text-3xl">
-            {cms.service_head}
-          </h2>
-          <p className="text-lg md:text-2xl text-[#1f1f1f]">
-            {cms.service_detail}
-          </p>
+          <h2
+            className="text-[#8F2F34] font-semibold text-2xl md:text-3xl"
+            dangerouslySetInnerHTML={{ __html: cms.service_head || "" }}
+          />
+          <p
+            className="text-lg md:text-2xl text-[#1f1f1f]"
+            dangerouslySetInnerHTML={{ __html: cms.service_detail || "" }}
+          />
         </div>
         <div className="flex-1 flex flex-col gap-5 md:gap-10 ">
           <div className="flex items-center gap-7">
@@ -58,12 +61,18 @@ const Consult = ({ cms, contact }: { cms: CmsType; contact: ContactProps }) => {
               loading="lazy"
             />
             <div className="flex flex-col gap-1 md:gap-4">
-              <h6 className="text-base md:text-[22px] font-bold text-[#8F2F34]">
-                {cms.service_item_head_one}
-              </h6>
-              <p className="text-sm md:text-xl text-[#1f1f1f]">
-                {cms.service_item_detail_one}
-              </p>
+              <h6
+                className="text-base md:text-[22px] font-bold text-[#8F2F34]"
+                dangerouslySetInnerHTML={{
+                  __html: cms.service_item_head_one || "",
+                }}
+              />
+              <p
+                className="text-sm md:text-xl text-[#1f1f1f]"
+                dangerouslySetInnerHTML={{
+                  __html: cms.service_item_detail_one || "",
+                }}
+              />
             </div>
           </div>
           <div className="flex items-center gap-7">
@@ -76,12 +85,18 @@ const Consult = ({ cms, contact }: { cms: CmsType; contact: ContactProps }) => {
               loading="lazy"
             />
             <div className="flex flex-col gap-1 md:gap-4">
-              <h6 className="text-base md:text-[22px] font-bold text-[#8F2F34]">
-                {cms.service_item_head_two}
-              </h6>
-              <p className="text-sm md:text-xl text-[#1f1f1f]">
-                {cms.service_item_detail_two}
-              </p>
+              <h6
+                className="text-base md:text-[22px] font-bold text-[#8F2F34]"
+                dangerouslySetInnerHTML={{
+                  __html: cms.service_item_head_two || "",
+                }}
+              />
+              <p
+                className="text-sm md:text-xl text-[#1f1f1f]"
+                dangerouslySetInnerHTML={{
+                  __html: cms.service_item_detail_two || "",
+                }}
+              />
             </div>
           </div>
           <div className="flex items-center gap-7">
@@ -94,12 +109,18 @@ const Consult = ({ cms, contact }: { cms: CmsType; contact: ContactProps }) => {
               loading="lazy"
             />
             <div className="flex flex-col gap-1 md:gap-4">
-              <h6 className="text-base md:text-[22px] font-bold text-[#8F2F34]">
-                {cms.service_item_head_three}
-              </h6>
-              <p className="text-sm md:text-xl text-[#1f1f1f]">
-                {cms.service_item_detail_three}
-              </p>
+              <h6
+                className="text-base md:text-[22px] font-bold text-[#8F2F34]"
+                dangerouslySetInnerHTML={{
+                  __html: cms.service_item_head_three || "",
+                }}
+              />
+              <p
+                className="text-sm md:text-xl text-[#1f1f1f]"
+                dangerouslySetInnerHTML={{
+                  __html: cms.service_item_detail_three || "",
+                }}
+              />
             </div>
           </div>
         </div>

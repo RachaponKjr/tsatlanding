@@ -18,7 +18,6 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { usePathname, useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { cn } from "@/lib/utils"; // ถ้าไม่มี lib/utils ให้ลบ cn ออกเเล้วใช้ template literal ธรรมดา
 
 interface SidebarItem {
   id: string;
@@ -44,7 +43,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
       id: "cms",
       label: "ภาพรวมระบบ",
       icon: <LayoutDashboard className="w-5 h-5" />,
-      href: "/dashboard",
+      href: "/dashboard-landing",
     },
     {
       id: "web-manage",
@@ -56,13 +55,13 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
           id: "faq",
           label: "ข้อมูล FAQ",
           icon: <BadgeQuestionMark className="w-4 h-4" />,
-          href: "/dashboard/faq",
+          href: "/dashboard-landing/faq",
         },
         {
           id: "contact",
           label: "ข้อมูลการติดต่อ",
           icon: <Contact className="w-4 h-4" />,
-          href: "/dashboard/contact",
+          href: "/dashboard-landing/contact",
         },
       ],
     },
@@ -76,7 +75,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
           id: "reports",
           label: "SEO พื้นฐาน",
           icon: <FileText className="w-4 h-4" />,
-          href: "/dashboard/seosetup/basic",
+          href: "/dashboard-landing/seosetup/basic",
         },
       ],
     },
@@ -84,7 +83,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
       id: "usersetup",
       label: "ผู้ใช้งานระบบ",
       icon: <Users className="w-5 h-5" />,
-      href: "/dashboard/users",
+      href: "/dashboard-landing/users",
     },
   ];
 

@@ -30,7 +30,6 @@ const page = () => {
     });
     if (res.ok) {
       const { data } = await res.json();
-      console.log(data, "CMS!");
       setCms(data);
     }
   }, []);
@@ -157,30 +156,42 @@ const page = () => {
     void getCMS();
   }, []);
 
+  console.log(cms, "CMS!");
+
   return (
     <div className=" p-4 flex flex-col gap-4">
       <h5 className="text-xl font-semibold text-[#1f1f1f]">จัดการหน้าเว็บ</h5>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        {/* ตัวอย่างที่ 1: section1_header */}
         <TextareaWithLabel
           onChange={(e) => {
             setCms((prev) =>
+              // ใช้ e.target.value ซึ่งตอนนี้มี <br/> แล้ว
               prev ? { ...prev, section1_header: e.target.value } : prev
             );
           }}
+          // ส่งค่าที่มี <br/> เข้าไป
           value={cms?.section1_header}
           name="section1_header"
-          label="canonical"
+          label="ส่วนที่ 1: หัวข้อหลัก" // เปลี่ยน label ให้มีความหมาย
         />
+
+        {/* ตัวอย่างที่ 2: section1_sub */}
         <TextareaWithLabel
           onChange={(e) => {
             setCms((prev) =>
+              // ใช้ e.target.value ซึ่งตอนนี้มี <br/> แล้ว
               prev ? { ...prev, section1_sub: e.target.value } : prev
             );
           }}
+          // ส่งค่าที่มี <br/> เข้าไป
           value={cms?.section1_sub}
           name="section1_sub"
-          label="canonical"
+          label="ส่วนที่ 1: ข้อความรอง" // เปลี่ยน label ให้มีความหมาย
         />
+
+        {/* ... (ทำแบบเดียวกันกับ TextareaWithLabel อื่นๆ) */}
+
         <TextareaWithLabel
           onChange={(e) => {
             setCms((prev) =>
@@ -189,7 +200,7 @@ const page = () => {
           }}
           value={cms?.section2_header}
           name="section2_header"
-          label="canonical"
+          label="ส่วนที่ 2: หัวข้อ"
         />
         <TextareaWithLabel
           onChange={(e) => {
@@ -199,7 +210,7 @@ const page = () => {
           }}
           value={cms?.section2_sub}
           name="section2_sub"
-          label="canonical"
+          label="ส่วนที่ 2: ข้อความรอง 1"
         />
         <TextareaWithLabel
           value={cms?.section2_sub2}
@@ -209,8 +220,10 @@ const page = () => {
             );
           }}
           name="section2_sub2"
-          label="canonical"
+          label="ส่วนที่ 2: ข้อความรอง 2"
         />
+        {/* ... ส่วนอื่น ๆ ... */}
+
         <TextareaWithLabel
           onChange={(e) => {
             setCms((prev) =>
@@ -219,7 +232,7 @@ const page = () => {
           }}
           value={cms?.section3_header}
           name="section3_header"
-          label="canonical"
+          label="ส่วนที่ 3: หัวข้อ"
         />
         <TextareaWithLabel
           onChange={(e) => {
@@ -229,7 +242,7 @@ const page = () => {
           }}
           value={cms?.section3_sub}
           name="section3_sub"
-          label="canonical"
+          label="ส่วนที่ 3: ข้อความรอง"
         />
         <TextareaWithLabel
           onChange={(e) => {
@@ -239,7 +252,7 @@ const page = () => {
           }}
           value={cms?.section3_item1_header}
           name="section3_item1_header"
-          label="canonical"
+          label="ส่วนที่ 3: บริการ 1 หัวข้อ"
         />
         <TextareaWithLabel
           onChange={(e) => {
@@ -249,7 +262,7 @@ const page = () => {
           }}
           value={cms?.section3_item1_sub}
           name="section3_item1_sub"
-          label="canonical"
+          label="ส่วนที่ 3: บริการ 1 รายละเอียด"
         />
         <TextareaWithLabel
           onChange={(e) => {
@@ -259,7 +272,7 @@ const page = () => {
           }}
           value={cms?.section3_item2_header}
           name="section3_item2_header"
-          label="canonical"
+          label="ส่วนที่ 3: บริการ 2 หัวข้อ"
         />
         <TextareaWithLabel
           onChange={(e) => {
@@ -269,7 +282,7 @@ const page = () => {
           }}
           value={cms?.section3_item2_sub}
           name="section3_item2_sub"
-          label="canonical"
+          label="ส่วนที่ 3: บริการ 2 รายละเอียด"
         />
         <TextareaWithLabel
           onChange={(e) => {
@@ -279,7 +292,7 @@ const page = () => {
           }}
           value={cms?.section3_item3_header}
           name="section3_item3_header"
-          label="canonical"
+          label="ส่วนที่ 3: บริการ 3 หัวข้อ"
         />
         <TextareaWithLabel
           onChange={(e) => {
@@ -289,7 +302,17 @@ const page = () => {
           }}
           value={cms?.section3_item3_sub}
           name="section3_item3_sub"
-          label="canonical"
+          label="ส่วนที่ 3: บริการ 3 รายละเอียด"
+        />
+        <TextareaWithLabel
+          onChange={(e) => {
+            setCms((prev) =>
+              prev ? { ...prev, promotion_head: e.target.value } : prev
+            );
+          }}
+          value={cms?.promotion_head}
+          name="promotion_head"
+          label="โปรโมชั่น: หัวข้อ"
         />
         <TextareaWithLabel
           onChange={(e) => {
@@ -299,7 +322,7 @@ const page = () => {
           }}
           value={cms?.promotion_detail}
           name="promotion_detail"
-          label="canonical"
+          label="โปรโมชั่น: รายละเอียด"
         />
         <TextareaWithLabel
           onChange={(e) => {
@@ -309,7 +332,7 @@ const page = () => {
           }}
           name="consult_head"
           value={cms?.consult_head}
-          label="canonical"
+          label="ปรึกษา: หัวข้อ"
         />
         <TextareaWithLabel
           onChange={(e) => {
@@ -319,7 +342,7 @@ const page = () => {
           }}
           value={cms?.consult_detail}
           name="consult_detail"
-          label="canonical"
+          label="ปรึกษา: รายละเอียด"
         />
         <TextareaWithLabel
           onChange={(e) => {
@@ -329,7 +352,7 @@ const page = () => {
           }}
           value={cms?.service_head}
           name="service_head"
-          label="canonical"
+          label="บริการ: หัวข้อ"
         />
         <TextareaWithLabel
           onChange={(e) => {
@@ -339,7 +362,7 @@ const page = () => {
           }}
           value={cms?.service_detail}
           name="service_detail"
-          label="canonical"
+          label="บริการ: รายละเอียด"
         />
         <TextareaWithLabel
           onChange={(e) => {
@@ -349,7 +372,7 @@ const page = () => {
           }}
           value={cms?.service_item_head_one}
           name="service_item_head_one"
-          label="canonical"
+          label="บริการพิเศษ 1: หัวข้อ"
         />
         <TextareaWithLabel
           onChange={(e) => {
@@ -359,7 +382,7 @@ const page = () => {
           }}
           value={cms?.service_item_detail_one}
           name="service_item_detail_one"
-          label="canonical"
+          label="บริการพิเศษ 1: รายละเอียด"
         />
         <TextareaWithLabel
           onChange={(e) => {
@@ -369,7 +392,7 @@ const page = () => {
           }}
           value={cms?.service_item_head_two}
           name="service_item_head_two"
-          label="canonical"
+          label="บริการพิเศษ 2: หัวข้อ"
         />
         <TextareaWithLabel
           onChange={(e) => {
@@ -379,7 +402,7 @@ const page = () => {
           }}
           value={cms?.service_item_detail_two}
           name="service_item_detail_two"
-          label="canonical"
+          label="บริการพิเศษ 2: รายละเอียด"
         />
         <TextareaWithLabel
           onChange={(e) => {
@@ -389,7 +412,7 @@ const page = () => {
           }}
           value={cms?.service_item_head_three}
           name="service_item_head_three"
-          label="canonical"
+          label="บริการพิเศษ 3: หัวข้อ"
         />
         <TextareaWithLabel
           onChange={(e) => {
@@ -401,7 +424,7 @@ const page = () => {
           }}
           value={cms?.service_item_detail_three}
           name="service_item_detail_three"
-          label="canonical"
+          label="บริการพิเศษ 3: รายละเอียด"
         />
         <TextareaWithLabel
           onChange={(e) => {
@@ -411,7 +434,7 @@ const page = () => {
           }}
           value={cms?.about_head}
           name="about_head"
-          label="canonical"
+          label="เกี่ยวกับ: หัวข้อ"
         />
         <TextareaWithLabel
           onChange={(e) => {
@@ -421,7 +444,7 @@ const page = () => {
           }}
           value={cms?.about_detail}
           name="about_detail"
-          label="canonical"
+          label="เกี่ยวกับ: รายละเอียด"
         />
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">

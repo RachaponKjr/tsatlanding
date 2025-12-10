@@ -23,9 +23,10 @@ const Confidence = ({
             className="text-[#8F2F34] text-2xl md:text-4xl font-bold leading-relaxed"
             dangerouslySetInnerHTML={{ __html: cms.about_head || "" }}
           />
-          <p className="text-xl md:text-4xl text-[#4f4f4f] font-light leading-relaxed">
-            {cms.about_detail}
-          </p>
+          <p
+            className="text-xl md:text-4xl text-[#4f4f4f] font-light leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: cms.about_detail || "" }}
+          />
         </div>
         <div className="flex justify-start md:justify-center items-center gap-4 mt-2 w-full md:w-max">
           <Button

@@ -19,7 +19,7 @@ const apiVersion = '/api/v1';
 app.use(express.json());
 app.use(
   cors({
-    origin: 'https://topserviceautotechnic.com',
+    origin: ['https://topserviceautotechnic.com', 'http://localhost:3000'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     credentials: true,
   }),
