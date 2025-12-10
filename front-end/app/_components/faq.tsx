@@ -1,33 +1,40 @@
+"use client";
 import {
   Dialog,
   DialogContent,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { useCallback, useEffect, useState } from "react";
 
-const FAQ = async () => {
+const FAQ = () => {
   // ดึงข้อมูลจาก API
-  let data: { id: number; title: string; detail: string }[] = [];
-  try {
+  const [faq, setFaq] = useState<
+    { id: number; title: string; detail: string }[]
+  >([]);
+
+  const getFAQ = useCallback(async () => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/faq/get-faq`, {
       method: "GET",
       cache: "no-store",
     });
     if (res.ok) {
       const json = await res.json();
-      data = json.data;
+      setFaq(json.data);
     } else {
       console.error("โหลด FAQ ไม่สำเร็จ");
     }
-  } catch (err) {
-    console.error("Error fetching FAQ:", err);
-  }
+  }, []);
+
+  useEffect(() => {
+    void getFAQ();
+  }, []);
 
   return (
     <div className="container mx-auto bg-white flex flex-col md:flex-row gap-4 md:gap-12">
       <h2 className="text-2xl md:text-3xl font-semibold text-[#8F2F34]">FAQ</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 md:gap-y-3.5 gap-x-10">
-        {data.map((item) => (
+        {faq.map((item) => (
           <Dialog key={item.id}>
             <DialogTrigger className="text-start">
               <ItemBox text={item?.title} />
