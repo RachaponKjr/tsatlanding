@@ -1,7 +1,7 @@
 # ---- Build stage ----
 FROM node:20-alpine AS builder
 
-# ติดตั้ง Library ที่จำเป็น
+# ติดตั้ง Library ที่จำเป็นสำหรับการ Build
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
@@ -14,9 +14,7 @@ RUN npm install
 # Copy source code
 COPY . .
 
-# --- จุดสำคัญที่แก้ให้ ---
-# รับค่า ARG แต่ตั้งค่า Default ไว้เป็น /api/landing เลย
-# แปลว่า: ถ้าลืมส่งค่ามาจาก docker-compose ก็ยังทำงานได้ถูกต้อง!
+# --- จุดสำคัญ ---
 ARG NEXT_PUBLIC_API_URL=/api/landing
 ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
 # ---------------------
@@ -25,18 +23,26 @@ ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
 ENV NEXT_TELEMETRY_DISABLED 1
 ENV NODE_OPTIONS="--max-old-space-size=1024"
 
-# สั่ง Build (ค่า Environment จะถูกฝังลงไปใน Code จังหวะนี้)
+# สั่ง Build
 RUN npm run build
 
-# ---- Production stage (Secure) ----
+# ---- Production stage (Secure Hardened) ----
 FROM node:20-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
-
-# URL สำหรับ Server-side (ยิงหา Backend ภายใน Docker Network)
-# ตรวจสอบว่า Container Backend ชื่อ "tsat-landing-back" และรัน port 3001 จริง
+# URL สำหรับ Server-side
 ENV API_URL=http://tsat-landing-back:3001/api/v1
+
+# ---------------------------------------------------
+# 🛡️ SECURITY HARDENING: ตัดเครื่องมือโจรทิ้ง 🛡️
+# 1. ลบ apk (Package Manager) เพื่อป้องกันการแอบลงโปรแกรมเพิ่ม
+# 2. ลบ wget และ curl เพื่อป้องกันการดาวน์โหลด Script ไวรัส
+# 3. ลบ nc (Netcat) ถ้ามี เพื่อป้องกันการทำ Reverse Shell
+# ---------------------------------------------------
+RUN apk update && \
+    rm -rf /sbin/apk /etc/apk /lib/apk /usr/share/apk /var/lib/apk && \
+    rm -rf /usr/bin/wget /usr/bin/curl /usr/bin/nc
 
 # สร้าง User เพื่อความปลอดภัย (Non-root)
 RUN addgroup --system --gid 1001 nodejs
@@ -46,11 +52,10 @@ RUN adduser --system --uid 1001 nextjs
 COPY --from=builder /app/public ./public
 
 # Copy ไฟล์ Build (Standalone mode)
-# สำคัญ: ต้องกำหนด --chown ให้เป็นของ nextjs ทันทีที่ Copy
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-# สลับมาใช้ User ธรรมดา
+# สลับมาใช้ User ธรรมดา (สำคัญมาก! ห้ามลบ)
 USER nextjs
 
 EXPOSE 3000

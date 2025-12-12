@@ -7,6 +7,11 @@ services:
       args:
         NEXT_PUBLIC_API_URL: /api/landing
     container_name: tsat-landing-front
+    read_only: true
+    restart: always
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=64m
+      - /run:rw,noexec,nosuid,size=64m
     ports:
       - "3031:3000"
     environment:
