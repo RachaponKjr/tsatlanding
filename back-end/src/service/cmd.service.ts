@@ -1,5 +1,5 @@
 import { CmsReq } from '../types/cms.type';
-import { PrismaClient } from '../generated/prisma';
+import { PrismaClient } from '@prisma/client';
 
 const db = new PrismaClient();
 
