@@ -146,7 +146,6 @@ const page = () => {
         router.refresh();
       }
 
-      console.log(res);
     } catch (err) {
       console.log(err);
     }
@@ -156,7 +155,6 @@ const page = () => {
     void getCMS();
   }, []);
 
-  console.log(cms, "CMS!");
 
   return (
     <div className=" p-4 flex flex-col gap-4">

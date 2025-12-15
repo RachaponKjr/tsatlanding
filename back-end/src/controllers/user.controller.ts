@@ -75,7 +75,6 @@ const loginUserController = async (req: Request, res: Response) => {
       JWT_SECRET,
       { expiresIn: '1h' },
     );
-    console.log(JWT_SECRET);
 
     res.cookie('token', token, {
       httpOnly: true,

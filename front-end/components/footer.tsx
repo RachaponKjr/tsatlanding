@@ -28,7 +28,6 @@ const Footer = () => {
   const router = useRouter();
   const [contact, setContact] = useState<ContactProps>();
 
-  console.log(path);
 
   const getContact = useCallback(async () => {
     const res = await fetch(`/api/landing/contact/get-contact`, {

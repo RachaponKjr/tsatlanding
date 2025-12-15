@@ -31,7 +31,6 @@ export default function LoginPage() {
           password: password,
         }),
       });
-      console.log(res);
       if (!res.ok) {
         // กรณี Server ตอบกลับมาว่า Error (400, 401, 500)
         const errorData = await res.json().catch(() => ({})); // กันกรณี json พัง

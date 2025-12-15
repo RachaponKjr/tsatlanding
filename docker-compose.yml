@@ -26,6 +26,7 @@ services:
     build:
       context: ./back-end
     container_name: tsat-landing-back
+    restart: always
     ports:
       - "4000:3001"
     environment:
@@ -35,21 +36,13 @@ services:
       - db
     networks:
       - tsat-landing-network
-    volumes:
-      - ./back-end:/app
-    command: >
-      sh -c "
-        npx prisma migrate deploy &&
-        npx prisma generate &&
-        npm run dev
-      "
 
   db:
     image: postgres:15
     container_name: postgres
     restart: always
-    ports:
-      - "5431:5432"
+    expose:
+      - "5432"
     environment:
       POSTGRES_USER: dblanding
       POSTGRES_PASSWORD: H9VBy9ECbAZesKweFR6Rvbbgv
