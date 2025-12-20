@@ -1,6 +1,11 @@
 version: "3.8"
 
 services:
+  deploy:
+    resources:
+      limits:
+        cpus: "0.50"
+        memory: 512M
   frontend:
     build:
       context: ./front-end
@@ -14,6 +19,8 @@ services:
       - /run:rw,noexec,nosuid,size=64m
     ports:
       - "3031:3000"
+    security_opt:
+      - no-new-privileges:true
     environment:
       NEXT_PUBLIC_API_URL: /api/landing
       API_URL: http://tsat-landing-back:3001/api/v1
