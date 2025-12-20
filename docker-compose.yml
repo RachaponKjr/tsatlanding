@@ -1,17 +1,14 @@
 version: "3.8"
 
 services:
-  deploy:
-    resources:
-      limits:
-        cpus: "0.50"
-        memory: 512M
   frontend:
     build:
       context: ./front-end
       args:
         NEXT_PUBLIC_API_URL: /api/landing
     container_name: tsat-landing-front
+    cpus: "0.50"
+    memory: 512M
     read_only: true
     restart: always
     tmpfs:
