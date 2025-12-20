@@ -7,8 +7,6 @@ services:
       args:
         NEXT_PUBLIC_API_URL: /api/landing
     container_name: tsat-landing-front
-    cpus: "0.50"
-    memory: 512M
     read_only: true
     restart: always
     tmpfs:
